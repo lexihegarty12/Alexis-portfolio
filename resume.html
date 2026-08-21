@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résumé | Alexis Hegarty</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #0b1830;
+      --navy-soft: #102342;
+      --white: #fffdf8;
+      --muted: rgba(255,253,248,.64);
+      --hair: rgba(255,253,248,.16);
+      --blue: #3f7dff;
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "Inter", sans-serif;
+      --edge: clamp(24px, 6vw, 96px);
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--sans);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px var(--edge);
+      border-bottom: 1px solid var(--hair);
+    }
+
+    .brand {
+      font: 500 18px var(--serif);
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .brand span { color: var(--blue); }
+
+    .back {
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .13em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .back:hover { color: var(--blue); }
+
+    main {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 72px var(--edge) 96px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 18px 0 45px;
+      font: 400 clamp(48px, 7vw, 86px)/1 var(--serif);
+      letter-spacing: -.03em;
+    }
+
+    .resume-frame {
+      height: min(78vh, 1050px);
+      border: 1px solid var(--hair);
+      background: white;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .fallback {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .fallback a {
+      color: var(--white);
+    }
+
+    .fallback a:hover {
+      color: var(--blue);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="brand" href="index.html">Alexis Hegarty <span>·</span></a>
+    <a class="back" href="index.html">← Back to portfolio</a>
+  </header>
+
+  <main>
+    <p class="label">Résumé</p>
+    <h1>Experience, education<br>and selected skills.</h1>
+
+    <div class="resume-frame">
+      <iframe
+        src="Alexis-Hegarty-Resume-2.pdf#view=FitH"
+        title="Alexis Hegarty résumé">
+      </iframe>
+    </div>
+
+    <p class="fallback">
+      Having trouble viewing the résumé?
+      <a href="Alexis-Hegarty-Resume-2.pdf" target="_blank" rel="noreferrer">Open it in a new tab ↗</a>
+    </p>
+  </main>
+</body>
+</html>
