@@ -1,136 +1,891 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Alexis Hegarty — Business Analytics master's student and aspiring data scientist." />
-  <title>Alexis Hegarty | Data, with perspective</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alexis Hegarty — Business Analytics &amp; Data Science</title>
+<meta name="description" content="Portfolio of Alexis Hegarty, Business Analytics Master's student at Cal Poly, seeking data science roles." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --black:#0b1830;
+    --espresso:#102342;
+    --espresso-2:#152d53;
+    --paper:#f1ecdf;
+    --white:#fffdf8;
+    --ink-soft:rgba(247,244,238,0.62);
+    --ink-faint:rgba(247,244,238,0.34);
+    --hair:rgba(247,244,238,0.14);
+    --blue:#3f7dff;
+    --blue-soft:rgba(63,125,255,0.4);
+    --blue-glow:rgba(63,125,255,0.16);
+
+    --serif:'Fraunces', 'Iowan Old Style', Georgia, serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --edge: clamp(24px, 6vw, 96px);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* subtle paper grain */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+
+  ::selection{ background:var(--blue-soft); color:var(--white); }
+
+  :focus-visible{
+    outline:2px solid var(--blue);
+    outline-offset:4px;
+    border-radius:2px;
+  }
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    font-weight:500;
+  }
+
+  .container{
+    max-width:1320px;
+    margin:0 auto;
+    padding-left:var(--edge);
+    padding-right:var(--edge);
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:26px var(--edge);
+    background:linear-gradient(to bottom, rgba(12,11,10,0.92), rgba(12,11,10,0));
+    backdrop-filter:blur(6px);
+    transition:padding 0.4s ease;
+  }
+  header.site-nav.scrolled{
+    padding:16px var(--edge);
+    background:rgba(12,11,10,0.86);
+    border-bottom:1px solid var(--hair);
+  }
+  .brand{
+    font-family:var(--serif);
+    font-size:17px;
+    letter-spacing:0.03em;
+    font-weight:500;
+    color:var(--white);
+  }
+  .brand span{ color:var(--blue); }
+
+  nav.primary-links ul{ display:flex; gap:44px; }
+  nav.primary-links a{
+    position:relative;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    padding-bottom:6px;
+    transition:color 0.3s ease;
+  }
+  nav.primary-links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:0;
+    width:0%;
+    height:1px;
+    background:var(--blue);
+    transition:width 0.35s cubic-bezier(.4,0,.2,1);
+  }
+  nav.primary-links a:hover{ color:var(--white); }
+  nav.primary-links a:hover::after{ width:100%; }
+  nav.primary-links a.active{ color:var(--white); }
+  nav.primary-links a.active::after{ width:100%; }
+
+  .nav-toggle{ display:none; }
+
+  /* ---------- INDEX RAIL (signature element) ---------- */
+  .index-rail{
+    position:fixed;
+    left:28px;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:90;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:22px;
+  }
+  .index-rail .rail-line{
+    width:1px;
+    height:64px;
+    background:var(--hair);
+  }
+  .index-rail .rail-dot{
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--ink-faint);
+    transition:all 0.4s ease;
+    position:relative;
+  }
+  .index-rail .rail-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:22px;
+    cursor:pointer;
+  }
+  .index-rail .rail-item .rail-label{
+    writing-mode:vertical-rl;
+    font-size:10px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    transition:color 0.35s ease;
+  }
+  .index-rail .rail-item.active .rail-dot{
+    background:var(--blue);
+    box-shadow:0 0 0 4px var(--blue-glow);
+  }
+  .index-rail .rail-item.active .rail-label{ color:var(--white); }
+  .index-rail .rail-item:hover .rail-label{ color:var(--white); }
+
+  @media (max-width: 1180px){ .index-rail{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding-top:120px;
+    padding-bottom:80px;
+    overflow:hidden;
+  }
+  .hero-curve{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    opacity:0.9;
+  }
+  .hero-curve path{
+    fill:none;
+    stroke:var(--hair);
+    stroke-width:1;
+  }
+  .hero-curve path.accent{
+    stroke:var(--hair);
+    stroke-width:1.3;
+    stroke-dasharray:1400;
+    stroke-dashoffset:1400;
+    animation:draw 2.6s cubic-bezier(.4,0,.2,1) 0.3s forwards;
+    opacity:0.75;
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+
+  .hero-inner{ position:relative; z-index:1; }
+
+  .hero .eyebrow{ margin-bottom:26px; display:flex; align-items:center; gap:14px; }
+  .hero .eyebrow::before{
+    content:"";
+    width:34px; height:1px;
+    background:var(--blue-soft);
+    display:inline-block;
+  }
+
+  h1.hero-name{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(52px, 9.4vw, 128px);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+    max-width:16ch;
+  }
+  h1.hero-name em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--white);
+  }
+
+  .hero-statement{
+    margin-top:34px;
+    max-width:640px;
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(19px, 2.1vw, 26px);
+    line-height:1.5;
+    color:var(--ink-soft);
+  }
+  .hero-statement .hl{ color:var(--white); font-style:normal; }
+
+  .hero-actions{
+    margin-top:52px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+    flex-wrap:wrap;
+  }
+
+  .btn-primary{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:16px 30px;
+    border:1px solid var(--blue);
+    color:var(--white);
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    border-radius:2px;
+    background:transparent;
+    transition:background 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+  }
+  .btn-primary:hover{
+    background:var(--blue);
+    box-shadow:0 0 0 6px var(--blue-glow);
+  }
+  .btn-primary svg{ width:14px; height:14px; transition:transform 0.35s ease; }
+  .btn-primary:hover svg{ transform:translateX(4px); }
+
+  .hero-meta{
+    font-size:13px;
+    color:var(--ink-faint);
+    display:flex;
+    gap:10px;
+    align-items:center;
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:44px;
+    left:var(--edge);
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--ink-faint);
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    z-index:1;
+  }
+  .scroll-cue .line{
+    width:1px; height:34px;
+    background:linear-gradient(var(--ink-faint), transparent);
+    animation:pulse-line 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse-line{ 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+
+  @media (max-width: 640px){ .scroll-cue{ display:none; } }
+
+  /* ---------- SECTION LABELS ---------- */
+  .section-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:32px;
+    margin-bottom:72px;
+    border-bottom:1px solid var(--hair);
+    padding-bottom:32px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(36px, 5vw, 58px);
+    letter-spacing:-0.01em;
+  }
+  .section-head p{
+    max-width:360px;
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.65;
+  }
+
+  section{ position:relative; padding:150px 0; z-index:1; }
+
+  /* ---------- WORK ---------- */
+  .work-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:2px;
+    background:var(--hair);
+    border:1px solid var(--hair);
+  }
+  @media (max-width: 860px){ .work-grid{ grid-template-columns:1fr; } }
+
+  .case-card{
+    position:relative;
+    background:var(--espresso);
+    padding:56px 44px 44px;
+    min-height:420px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+    transition:background 0.5s ease;
+  }
+  .case-card:hover{ background:var(--espresso-2); }
+
+  .case-card .card-motif{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    opacity:0.55;
+    transition:opacity 0.6s ease, transform 0.8s cubic-bezier(.16,1,.3,1);
+  }
+  .case-card:hover .card-motif{ opacity:0.9; transform:scale(1.04); }
+  .case-card .project-preview{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:top center;
+    opacity:0.40;
+    filter:saturate(0.55) contrast(1.1);
+    transition:opacity 0.5s ease, transform 0.8s cubic-bezier(.16,1,.3,1);
+  }
+  .case-card:hover .project-preview{ opacity:0.62; transform:scale(1.04); }
+  .card-motif path, .card-motif circle, .card-motif line{
+    stroke:var(--hair);
+    fill:none;
+  }
+  .case-card:hover .card-motif .glow-stroke{ stroke:var(--blue-soft); }
+
+  .card-top{ position:relative; z-index:1; display:flex; justify-content:space-between; align-items:flex-start; }
+  .card-index{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:15px;
+    color:var(--ink-faint);
+  }
+  .card-arrow{
+    width:34px; height:34px;
+    border:1px solid var(--hair);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:all 0.4s ease;
+  }
+  .card-arrow svg{ width:13px; height:13px; transition:transform 0.4s ease; }
+  .case-card:hover .card-arrow{ border-color:var(--blue); background:var(--blue); }
+  .case-card:hover .card-arrow svg{ transform:rotate(45deg); }
+
+  .card-bottom{ position:relative; z-index:1; }
+  .card-category{
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:16px;
+    display:inline-block;
+  }
+  .case-card h3{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(24px, 2.4vw, 32px);
+    line-height:1.15;
+    margin-bottom:14px;
+    max-width:20ch;
+  }
+  .card-context{
+    font-size:13.5px;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .card-context .dot{ width:4px; height:4px; border-radius:50%; background:var(--ink-faint); }
+
+  .card-line{
+    margin-top:22px;
+    height:1px;
+    width:0%;
+    background:var(--blue);
+    transition:width 0.5s cubic-bezier(.4,0,.2,1);
+  }
+  .case-card:hover .card-line{ width:64px; }
+
+  /* ---------- ABOUT ---------- */
+  .about-wrap{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:80px;
+    align-items:start;
+  }
+  @media (max-width: 900px){ .about-wrap{ grid-template-columns:1fr; gap:56px; } }
+
+  .about-figure{
+    position:relative;
+    aspect-ratio:3/4;
+    border:1px solid var(--hair);
+    background:var(--espresso);
+    overflow:hidden;
+  }
+  .about-figure svg{ width:100%; height:100%; }
+  .about-figure img{ width:100%; height:100%; object-fit:cover; object-position:center top; }
+  .about-figure .fig-caption{
+    position:absolute;
+    bottom:0; left:0; right:0;
+    padding:20px 24px;
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    border-top:1px solid var(--hair);
+    background:rgba(12,11,10,0.5);
+    backdrop-filter:blur(4px);
+  }
+
+  .about-copy p{
+    font-size:clamp(17px, 1.6vw, 21px);
+    line-height:1.75;
+    color:var(--ink-soft);
+    margin-bottom:26px;
+    max-width:58ch;
+  }
+  .about-copy p .hl{ color:var(--white); }
+  .about-copy p:first-of-type{
+    font-family:var(--serif);
+    font-size:clamp(22px, 2.3vw, 30px);
+    color:var(--white);
+    line-height:1.4;
+    font-style:italic;
+  }
+
+  .about-facts{
+    margin-top:48px;
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    border-top:1px solid var(--hair);
+    padding-top:32px;
+  }
+  @media (max-width:560px){ .about-facts{ grid-template-columns:1fr; gap:28px; } }
+  .about-facts .fact-num{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:32px;
+    color:var(--white);
+    margin-bottom:8px;
+  }
+  .about-facts .fact-label{
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-section{
+    padding-bottom:120px;
+  }
+  .contact-inner{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:60px;
+  }
+  @media (max-width:900px){ .contact-inner{ grid-template-columns:1fr; gap:56px; } }
+
+  .contact-headline{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(38px, 5.6vw, 76px);
+    line-height:1.06;
+    letter-spacing:-0.01em;
+    max-width:14ch;
+  }
+  .contact-headline em{ font-style:italic; color:var(--white); }
+
+  .contact-sub{
+    margin-top:26px;
+    max-width:46ch;
+    font-size:16px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+
+  .contact-list{ display:flex; flex-direction:column; }
+  .contact-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:26px 0;
+    border-bottom:1px solid var(--hair);
+    transition:padding-left 0.35s ease;
+  }
+  .contact-row:first-child{ border-top:1px solid var(--hair); }
+  .contact-row:hover{ padding-left:10px; }
+  .contact-row .label{
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .contact-row .value{
+    font-family:var(--serif);
+    font-size:clamp(17px, 1.8vw, 22px);
+    color:var(--white);
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .contact-row .value svg{ width:14px; height:14px; opacity:0; transform:translateX(-6px); transition:all 0.35s ease; color:var(--blue); }
+  .contact-row:hover .value svg{ opacity:1; transform:translateX(0); }
+  .contact-row:hover .value{ color:var(--blue); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:40px var(--edge) 48px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid var(--hair);
+    font-size:11.5px;
+    letter-spacing:0.06em;
+    color:var(--ink-faint);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  footer a:hover{ color:var(--white); }
+
+  /* mobile nav */
+  @media (max-width: 720px){
+    nav.primary-links{
+      position:fixed;
+      inset:0;
+      background:var(--black);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      opacity:0;
+      pointer-events:none;
+      transition:opacity 0.4s ease;
+      z-index:99;
+    }
+    nav.primary-links.open{ opacity:1; pointer-events:auto; }
+    nav.primary-links ul{ flex-direction:column; gap:36px; align-items:center; }
+    nav.primary-links a{ font-size:16px; }
+
+    .nav-toggle{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      width:26px;
+      z-index:101;
+      background:none; border:none;
+      cursor:pointer;
+      padding:8px;
+    }
+    .nav-toggle span{
+      display:block; height:1px; width:100%;
+      background:var(--white);
+      transition:all 0.3s ease;
+    }
+    .nav-toggle.open span:nth-child(1){ transform:translateY(6px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2){ opacity:0; }
+    .nav-toggle.open span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
+  }
+</style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <a class="wordmark" href="#home" aria-label="Alexis Hegarty home">AH<span>.</span></a>
-    <nav aria-label="Primary navigation">
-      <a class="active" href="#home">Index</a>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="availability" href="#contact"><i></i> Available 2026</a>
-  </header>
+<div class="index-rail" id="indexRail">
+  <div class="rail-item" data-target="work">
+    <span class="rail-label">Work</span>
+    <span class="rail-dot"></span>
+  </div>
+  <div class="rail-line"></div>
+  <div class="rail-item" data-target="about">
+    <span class="rail-label">About</span>
+    <span class="rail-dot"></span>
+  </div>
+  <div class="rail-line"></div>
+  <div class="rail-item" data-target="contact">
+    <span class="rail-label">Contact</span>
+    <span class="rail-dot"></span>
+  </div>
+</div>
 
-  <main id="main">
-    <section id="home" class="hero section-shell">
-      <div class="hero-copy">
-        <p class="kicker">01 / Portfolio</p>
-        <h1>Turning data into <em>decisions</em> people can use.</h1>
-        <p class="lede">Alexis Hegarty is a Business Analytics master's student and emerging data scientist who brings analytical rigor and creative perspective to data and business questions.</p>
-        <a class="button" href="#work">Explore selected work <span>↘</span></a>
+<header class="site-nav" id="siteNav">
+  <a href="#top" class="brand">Alexis Hegarty <span>·</span></a>
+  <nav class="primary-links" id="primaryNav">
+    <ul>
+      <li><a href="#work" data-nav="work">Selected Work</a></li>
+      <li><a href="#about" data-nav="about">About</a></li>
+      <li><a href="#contact" data-nav="contact">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <svg class="hero-curve" viewBox="0 0 1400 900" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M -50 700 C 200 650, 350 500, 500 480 C 700 450, 800 250, 1000 220 C 1150 200, 1250 260, 1450 180" />
+      <path class="accent" d="M -50 760 C 220 720, 380 560, 540 520 C 740 470, 840 300, 1040 260 C 1190 230, 1280 300, 1470 210" />
+      <path d="M -50 560 C 180 600, 400 400, 620 430 C 820 460, 900 300, 1120 320 C 1250 335, 1300 260, 1450 300" opacity="0.5" />
+    </svg>
+
+    <div class="container hero-inner">
+      <p class="eyebrow">Business Analytics, MS · Cal Poly, San Luis Obispo</p>
+      <h1 class="hero-name">Alexis<br><em>Hegarty</em></h1>
+      <p class="hero-statement">Turning <span class="hl">regression tables</span> into decisions and <span class="hl">raw data</span> into a case worth telling — analytical rigor, staged with a choreographer's eye.</p>
+
+      <div class="hero-actions">
+        <a href="#work" class="btn-primary">
+          View Selected Work
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <p class="hero-meta">Statistics, B.S. · Cum Laude · Minor in Dance</p>
       </div>
+    </div>
 
-      <div class="hero-portrait">
-        <div class="portrait-frame">
-          <img src="alexis-hegarty-headshot.png" alt="Alexis Hegarty smiling in a dark tailored suit jacket." />
+    <div class="scroll-cue"><span class="line"></span> Scroll</div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section id="work">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow" style="margin-bottom:18px;">01 — Field Notes</p>
+          <h2>Selected&nbsp;Work</h2>
         </div>
-        <p class="portrait-caption">Based in the United States<br />Open to data science opportunities</p>
+        <p>Two projects spanning learning analytics and healthcare data storytelling—each translating an open-ended question into a clear, evidence-led narrative.</p>
       </div>
 
-      <p class="hero-note">Insight is only valuable<br />when it changes what comes next.</p>
-    </section>
+      <div class="work-grid">
 
-    <section id="work" class="work section-shell">
-      <div class="section-intro">
-        <p class="kicker">02 / Selected work</p>
-        <h2>A considered view of<br /><em>data in context.</em></h2>
-        <p>Projects that move from question to insight to action across education, healthcare, and business analytics.</p>
+        <!-- Card 1 -->
+        <a class="case-card" href="frost-research.html" aria-label="Modeling Student Interactions in Online Statistics Courses — view case study">
+          <img class="project-preview" src="frost-preview.png" alt="" />
+          <svg class="card-motif" viewBox="0 0 400 420" preserveAspectRatio="none" aria-hidden="true">
+            <path class="glow-stroke" d="M0 340 Q 100 260 200 300 T 400 220" />
+            <path d="M0 380 Q 120 320 220 350 T 400 300" />
+            <circle cx="90" cy="120" r="60" />
+            <circle cx="240" cy="80" r="30" />
+          </svg>
+          <div class="card-top">
+            <span class="card-index">No. 01</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          </div>
+          <div class="card-bottom">
+            <span class="card-category">Learning Analytics · Research</span>
+            <h3>Modeling Student Interactions</h3>
+            <div class="card-context">Frost Summer Research <span class="dot"></span> Cal Poly</div>
+            <div class="card-line"></div>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a class="case-card" href="datafest.html" aria-label="Cancer Care Journeys — view case study">
+          <img class="project-preview" src="datafest-preview.png" alt="" />
+          <svg class="card-motif" viewBox="0 0 400 420" preserveAspectRatio="none" aria-hidden="true">
+            <path class="glow-stroke" d="M20 380 L 20 260 L 100 260 L 100 380 Z" />
+            <path d="M140 380 L 140 180 L 220 180 L 220 380 Z" />
+            <path class="glow-stroke" d="M260 380 L 260 90 L 340 90 L 340 380 Z" />
+          </svg>
+          <div class="card-top">
+            <span class="card-index">No. 02</span>
+            <span class="card-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+          </div>
+          <div class="card-bottom">
+            <span class="card-category">Healthcare Analytics · DataFest 2026</span>
+            <h3>Cancer Care Journeys</h3>
+            <div class="card-context">Team project <span class="dot"></span> Data storytelling</div>
+            <div class="card-line"></div>
+          </div>
+        </a>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow" style="margin-bottom:18px;">02 — Backstory</p>
+          <h2>About</h2>
+        </div>
       </div>
 
-      <div class="project-grid">
-        <article class="project project-featured">
-          <a href="Frost2025.pdf" target="_blank" rel="noreferrer" aria-label="Open Modeling Student Interactions in Online Statistics Courses PDF">
-            <div class="project-art art-one">
-              <span>01</span>
-              <div class="chart-bars"><b></b><b></b><b></b><b></b><b></b></div>
-              <small>Learning / Interaction / Outcome</small>
+      <div class="about-wrap">
+        <div class="about-figure">
+          <img src="alexis-hegarty-headshot.png" alt="Alexis Hegarty in a dark tailored suit jacket" />
+          <div class="fig-caption">
+            <span>Fig. 01</span>
+            <span>Line &amp; Curve</span>
+          </div>
+        </div>
+
+        <div class="about-copy">
+          <p>I think of a dataset the way I used to think of a stage mark — as a starting position, not the whole story.</p>
+          <p>I'm a Master's student in <span class="hl">Business Analytics</span> at Cal Poly, finishing a B.S. in Statistics, Cum Laude, alongside a minor in Dance. Most of my time goes to the parts of analysis that resist a template: refining a coding scheme until three researchers agree, redesigning an underpowered study so it can actually answer its question, sitting with a longitudinal dataset until an unexpected pattern in mother–infant feeding behavior becomes legible.</p>
+          <p>Years spent choreographing and performing taught me to notice structure before I notice content — timing, spacing, the shape a sequence makes. I bring that same instinct to a regression output or a client meeting: where's the real signal, and how do I stage it so someone else can see it too.</p>
+          <p>I'm currently looking toward <span class="hl">data science roles</span> where rigor and narrative aren't traded off against each other — where the analysis has to hold up, and so does the way it's told.</p>
+
+          <div class="about-facts">
+            <div>
+              <div class="fact-num">95%</div>
+              <div class="fact-label">Interrater agreement reached, up from ~80%, on a qualitative coding scheme.</div>
             </div>
-            <div class="project-meta">
-              <p><span>Project title</span><strong>Modeling Student Interactions in Online Statistics Courses</strong></p>
-              <p><span>Client / context</span><strong>Frost Summer Undergraduate Research Program · Cal Poly</strong></p>
-              <p><span>Category</span><strong>Educational data research</strong></p>
+            <div>
+              <div class="fact-num">90%</div>
+              <div class="fact-label">Projected statistical power after redesigning an underpowered study — up from 13%.</div>
             </div>
-            <div class="project-link">View presentation <span>↗</span></div>
+            <div>
+              <div class="fact-num">30+</div>
+              <div class="fact-label">Graduate students supported weekly across statistics, econometrics &amp; ML.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-head" style="border:none; padding-bottom:0; margin-bottom:64px;">
+        <p class="eyebrow" style="margin-bottom:18px;">03 — Get in Touch</p>
+      </div>
+
+      <div class="contact-inner">
+        <div>
+          <h2 class="contact-headline">Let's talk <em>data</em>, roles, or where the two meet.</h2>
+          <p class="contact-sub">Open to data science and analytics roles, research collaborations, and conversations with anyone building something that needs both careful methods and a clear story. I read every message.</p>
+        </div>
+
+        <div class="contact-list">
+          <a class="contact-row" href="mailto:aghegart@calpoly.edu">
+            <span class="label">Email</span>
+            <span class="value">aghegart@calpoly.edu
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </span>
           </a>
-        </article>
-
-        <article class="project">
-          <a href="team35_TheLateVariables.pdf" target="_blank" rel="noreferrer" aria-label="Open Cancer Care Journeys DataFest presentation">
-            <div class="project-art art-two">
-              <span>02</span>
-              <div class="dot-grid"></div>
-              <small>Patient / Care / Journey</small>
-            </div>
-            <div class="project-meta">
-              <p><span>Project title</span><strong>Cancer Care Journeys</strong></p>
-              <p><span>Client / context</span><strong>DataFest 2026 · Team project</strong></p>
-              <p><span>Category</span><strong>Healthcare analytics &amp; data storytelling</strong></p>
-            </div>
-            <div class="project-link">View presentation <span>↗</span></div>
+          <a class="contact-row" href="https://www.linkedin.com/in/alexisghegarty/" target="_blank" rel="noreferrer" aria-label="Alexis Hegarty on LinkedIn">
+            <span class="label">LinkedIn</span>
+            <span class="value">linkedin.com/in/alexis-hegarty
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </span>
           </a>
-        </article>
-
-        <article class="project">
-          <a href="Frost%20SURP%20Poster_5_1_2026.pdf" target="_blank" rel="noreferrer" aria-label="Open Social Presence in Online Statistics Courses research poster">
-            <div class="project-art art-three">
-              <span>03</span>
-              <div class="line-graphic"></div>
-              <small>Social / Presence / Performance</small>
-            </div>
-            <div class="project-meta">
-              <p><span>Project title</span><strong>Social Presence in Online Statistics Courses</strong></p>
-              <p><span>Client / context</span><strong>Frost Summer Undergraduate Research Program · Cal Poly</strong></p>
-              <p><span>Category</span><strong>Learning analytics research</strong></p>
-            </div>
-            <div class="project-link">View research poster <span>↗</span></div>
+          <a class="contact-row" href="tel:+12068239537">
+            <span class="label">Phone</span>
+            <span class="value">(206) 823-9537
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </span>
           </a>
-        </article>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="about" class="about section-shell">
-      <p class="kicker">03 / About</p>
-      <div class="about-copy">
-        <h2>I’m interested in the space between <em>what data says</em> and what people do next.</h2>
-        <p>As a Business Analytics master's student, I’m building a practice at the intersection of data science, business strategy, and clear communication. I enjoy finding the signal in complex information—and shaping it into work that is both rigorous and useful.</p>
-        <p>My approach combines curiosity, technical fluency, and a creative eye for the story behind the numbers.</p>
-      </div>
-      <div class="skills">
-        <span>Python</span><span>SQL</span><span>Tableau</span><span>Data storytelling</span><span>Machine learning</span><span>Business strategy</span>
-      </div>
-    </section>
+</main>
 
-    <section id="contact" class="contact section-shell">
-      <p class="kicker">04 / Contact</p>
-      <h2>Let’s make the next<br />decision <em>clearer.</em></h2>
-      <p>I’m seeking data science opportunities where thoughtful analysis can make a real difference.</p>
-      <a class="button button-light" href="mailto:aghegart@calpoly.edu">Start a conversation <span>↗</span></a>
-      <div class="contact-links">
-        <a href="mailto:aghegart@calpoly.edu">aghegart@calpoly.edu</a>
-        <a href="https://www.linkedin.com/in/alexisghegarty/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-        <a href="https://github.com/lexihegarty12/" target="_blank" rel="noreferrer">GitHub ↗</a>
-      </div>
-    </section>
-  </main>
+<footer>
+  <span>© 2026 Alexis Hegarty. San Luis Obispo, CA.</span>
+  <span><a href="#top">Back to top ↑</a></span>
+</footer>
 
-  <footer>
-    <span>© 2026 Alexis Hegarty</span>
-    <a href="#home">Back to top ↑</a>
-  </footer>
+<script>
+  // Scroll spy for nav + rail
+  const sections = ['work','about','contact'].map(id => document.getElementById(id));
+  const navLinks = document.querySelectorAll('[data-nav]');
+  const railItems = document.querySelectorAll('.rail-item');
 
-  <script src="script.js"></script>
+  function setActive(id){
+    navLinks.forEach(l => l.classList.toggle('active', l.dataset.nav === id));
+    railItems.forEach(r => r.classList.toggle('active', r.dataset.target === id));
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        setActive(entry.target.id);
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  sections.forEach(s => s && observer.observe(s));
+
+  railItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const target = document.getElementById(item.dataset.target);
+      if(target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Nav background on scroll
+  const siteNav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    siteNav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const primaryNav = document.getElementById('primaryNav');
+  navToggle.addEventListener('click', () => {
+    const open = primaryNav.classList.toggle('open');
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  primaryNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      primaryNav.classList.remove('open');
+      navToggle.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', false);
+    });
+  });
+</script>
+
 </body>
 </html>
