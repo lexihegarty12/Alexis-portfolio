@@ -11,9 +11,9 @@
 
 <style>
   :root{
-    --black:#0b1830;
-    --espresso:#102342;
-    --espresso-2:#152d53;
+    --black:#000000;
+    --espresso:#090909;
+    --espresso-2:#151515;
     --paper:#f1ecdf;
     --white:#fffdf8;
     --ink-soft:#fffdf8;
@@ -96,13 +96,13 @@
     align-items:center;
     justify-content:space-between;
     padding:26px var(--edge);
-    background:linear-gradient(to bottom, rgba(12,11,10,0.92), rgba(12,11,10,0));
+    background:linear-gradient(to bottom, rgba(0,0,0,0.96), rgba(0,0,0,0));
     backdrop-filter:blur(6px);
     transition:padding 0.4s ease;
   }
   header.site-nav.scrolled{
     padding:16px var(--edge);
-    background:rgba(12,11,10,0.86);
+    background:rgba(0,0,0,0.94);
     border-bottom:1px solid var(--hair);
   }
   .brand{
@@ -205,6 +205,7 @@
     z-index:0;
     opacity:0.9;
   }
+  .hero-curve, .index-rail, .scroll-cue{ display:none; }
   .hero-curve path{
     fill:none;
     stroke:var(--hair);
@@ -238,6 +239,7 @@
     letter-spacing:-0.01em;
     max-width:16ch;
   }
+  .eyebrow, .hero-meta, .section-head p, .card-category, .card-context, .about-copy p, .fact-label, .contact-sub, .contact-row .label, footer{ color:var(--white) !important; }
   h1.hero-name em{
     font-style:italic;
     font-weight:400;
@@ -246,13 +248,13 @@
 
   .hero-statement{
     margin-top:34px;
-    max-width:640px;
+    max-width:590px;
     font-family:var(--serif);
     font-style:italic;
     font-weight:400;
     font-size:clamp(19px, 2.1vw, 26px);
     line-height:1.5;
-    color:var(--ink-soft);
+    color:var(--white);
   }
   .hero-statement .hl{ color:var(--white); font-style:normal; }
 
@@ -654,7 +656,8 @@
     <ul>
       <li><a href="#work" data-nav="work">Selected Work</a></li>
       <li><a href="#about" data-nav="about">About</a></li>
-     <li><a href="resume.html">Résumé</a></li>
+      <li><a href="resume.html">Résumé</a></li>
+      <li><a href="#contact" data-nav="contact">Contact</a></li>
     </ul>
   </nav>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -675,14 +678,14 @@
     <div class="container hero-inner">
       <p class="eyebrow">Business Analytics M.S. · Cal Poly</p>
       <h1 class="hero-name">Alexis<br>Hegarty</h1>
-      <p class="hero-statement">Stats-trained, creatively minded, and happiest when I’m making a complicated question feel a little more solvable.</p>
+      <p class="hero-statement">stats-trained, creatively minded, problem solver.</p>
 
       <div class="hero-actions">
         <a href="#work" class="btn-primary">
           View Selected Work
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <p class="hero-meta">B.S. Statistics · Business Analytics M.S. · Cal Poly</p>
+        <p class="hero-meta">B.S. in Statistics · Minor in Dance · Cal Poly</p>
       </div>
     </div>
 
@@ -768,10 +771,15 @@
         </div>
 
         <div class="about-copy">
-          <p>I’m drawn to work that utilizes creativity and problem solving to develope applicable solutions.</p>
-          <p>I’m a Business Analytics master’s student at Cal Poly, with a B.S. in Statistics and a minor in Dance. My work has ranged from refining a research coding scheme to redesigning an underpowered study to helping graduate students work through statistics, econometrics, and machine learning.</p>
-          <p>Dance taught me to pay attention to timing, structure, and the small details that change the whole picture. I bring that same habit to data: slow down, look closely, and consider audience persecptive.</p>
-          <p>I’m looking for data science and analytics roles where I can keep learning, be creative, and inform meaningul decisions.</p>
+          <p>I’m drawn to work that combines creativity and problem-solving to develop practical solutions.</p>
+          <p>I’m a Business Analytics master’s student at Cal Poly, with a B.S. in Statistics and a minor in Dance. I’ve refined research coding schemes, redesigned an underpowered study, and supported graduate students in statistics, econometrics, and machine learning.</p>
+          <p>Dance taught me to pay attention to timing, structure, and the details that change the whole picture. I bring that same habit to data: look closely, ask better questions, and keep the audience in mind.</p>
+          <p>I’m looking for data science and analytics roles where I can keep learning, be creative, and help inform meaningful decisions.</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- CONTACT -->
@@ -783,8 +791,8 @@
 
       <div class="contact-inner">
         <div>
-          <h2 class="contact-headline">I’d love to hear what you’re working on.</h2>
-          <p class="contact-sub">I’m looking for data science and analytics roles where I can learn quickly, do careful work, and help make complex information more useful.</p>
+          <h2 class="contact-headline">Let’s connect.</h2>
+          <p class="contact-sub">I’m looking for data science and analytics roles, research opportunities, and thoughtful projects where data can help people make better decisions.</p>
         </div>
 
         <div class="contact-list">
