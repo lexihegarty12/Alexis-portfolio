@@ -169,3 +169,6 @@
   .docs{ padding:60px 0 75px; }
   .doc p{ min-height:0; }
 }
+.hero-grid.hero-text-only {
+  grid-template-columns: 1fr;
+}
