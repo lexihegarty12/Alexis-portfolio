@@ -1,71 +1,109 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Cancer Care Journeys | Alexis Hegarty</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="theme.css">
-<link rel="stylesheet" href="project.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Cancer Care Journeys | Alexis Hegarty</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="project.css">
+
+  <style>
+    .preview-link {
+      display: block;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--line);
+      background: var(--stone-deep);
+    }
+
+    .preview-link iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      pointer-events: none;
+    }
+
+    .cover .preview-link {
+      min-height: 420px;
+      aspect-ratio: 3 / 4;
+    }
+  </style>
 </head>
+
 <body>
-<header class="site-nav">
-  <a class="brand" href="index.html">Alexis Hegarty</a>
-  <a class="back" href="index.html#work">← Selected work</a>
-</header>
+  <header class="site-nav">
+    <a class="brand" href="index.html">Alexis Hegarty</a>
+    <a class="back" href="index.html#work">← Selected work</a>
+  </header>
 
-<main>
-  <section class="hero">
-    <div class="shell hero-grid">
-      <div>
-        <p class="label">DataFest 2026 · Team project</p>
-        <h1>Cancer care <em>journeys.</em></h1>
-        <p class="lede">A healthcare data-storytelling project centered on the questions, uncertainty, and information needs that shape a patient's treatment experience.</p>
-      </div>
-      <div class="cover">
-        <img src="datafest-preview.png" alt="Preview of Cancer Care Journeys presentation">
-      </div>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <p class="label">DataFest 2026 · Team project</p>
+          <h1>Cancer care <em>journeys.</em></h1>
+          <p class="lede">A healthcare data-storytelling project centered on the questions, uncertainty, and information needs that shape a patient's treatment experience.</p>
+        </div>
 
-  <section class="story shell">
-    <div class="story-grid">
-      <aside class="facts">
-        <div><span>Role</span><strong>DataFest team member</strong></div>
-        <div><span>Focus</span><strong>Healthcare analytics</strong></div>
-        <div><span>Lens</span><strong>Patient experience &amp; communication</strong></div>
-        <div><span>Format</span><strong>Data storytelling presentation</strong></div>
-      </aside>
-      <div>
-        <p class="label">Project overview</p>
-        <h2>Making uncertainty more visible in cancer care.</h2>
-        <p>For DataFest 2026, my team explored cancer care journeys through a patient-centered lens. We examined stress and anxiety, appointment experiences, and the information patients need at different points during treatment.</p>
-        <p>The project brought together care-journey patterns and social-determinant questions to focus attention on communication, access to information, and the human experience behind healthcare data. Our presentation translates those insights into a clear visual narrative about the moments where better support can matter most.</p>
+        <div class="cover">
+          <a class="preview-link" href="team35_TheLateVariables.pdf" target="_blank" rel="noreferrer">
+            <iframe
+              src="team35_TheLateVariables.pdf#page=1&view=FitH"
+              title="Preview of the Cancer Care Journeys presentation">
+            </iframe>
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="docs">
-    <div class="shell">
-      <p class="label">Project material</p>
-      <h2>Explore the work.</h2>
-      <div class="doc-grid">
-        <article class="doc">
-          <img src="datafest-preview.png" alt="Preview of Cancer Care Journeys presentation">
-          <h3>DataFest presentation</h3>
-          <p>The project's presentation on patient stress, anxiety, appointments, and the monthly cancer care journey.</p>
-          <a class="doc-link text-link" href="team35_TheLateVariables.pdf" target="_blank" rel="noreferrer">Open presentation ↗</a>
-        </article>
+    <section class="story shell">
+      <div class="story-grid">
+        <aside class="facts">
+          <div><span>Role</span><strong>DataFest team member</strong></div>
+          <div><span>Focus</span><strong>Healthcare analytics</strong></div>
+          <div><span>Lens</span><strong>Patient experience &amp; communication</strong></div>
+          <div><span>Format</span><strong>Data storytelling presentation</strong></div>
+        </aside>
+
+        <div>
+          <p class="label">Project overview</p>
+          <h2>Making uncertainty more visible in cancer care.</h2>
+          <p>For DataFest 2026, my team explored cancer care journeys through a patient-centered lens. We examined stress and anxiety, appointment experiences, and the information patients need at different points during treatment.</p>
+          <p>The project brought together care-journey patterns and social-determinant questions to focus attention on communication, access to information, and the human experience behind healthcare data. Our presentation translates those insights into a clear visual narrative about the moments where better support can matter most.</p>
+        </div>
       </div>
-    </div>
-  </section>
-</main>
+    </section>
 
-<footer class="site-footer">
-  <span>© 2026 Alexis Hegarty</span>
-  <a href="index.html">Return home</a>
-</footer>
+    <section class="docs">
+      <div class="shell">
+        <p class="label">Project material</p>
+        <h2>Explore the work.</h2>
+
+        <div class="doc-grid">
+          <article class="doc">
+            <a class="preview-link" href="team35_TheLateVariables.pdf" target="_blank" rel="noreferrer">
+              <iframe
+                src="team35_TheLateVariables.pdf#page=1&view=FitH"
+                title="Preview of the Cancer Care Journeys presentation">
+              </iframe>
+            </a>
+            <h3>DataFest presentation</h3>
+            <p>The project's presentation on patient stress, anxiety, appointments, and the monthly cancer care journey.</p>
+            <a class="doc-link text-link" href="team35_TheLateVariables.pdf" target="_blank" rel="noreferrer">Open presentation ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Alexis Hegarty</span>
+    <a href="index.html">Return home</a>
+  </footer>
 </body>
 </html>
