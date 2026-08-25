@@ -1,50 +1,36 @@
 # Alexis Hegarty Portfolio
 
-A static portfolio website for Alexis Hegarty.
+A static portfolio site: no backend, build tools, or database required.
 
 ## Structure
 
-* `theme.css` — shared soft-stone color system, base styles, navigation, and footer.
-* `project.css` — shared layout and styling for project pages.
-* `index.html` — homepage with hero, selected work, about, and contact sections.
-* `resume.html` — résumé page.
-* `frost-research.html` — Frost Summer Undergraduate Research project page.
-* `datafest.html` — DataFest project page.
-* `image.jpeg` — Frost project image used on the Selected Work card.
-* `data_fest_logo.png` — DataFest logo used on the Selected Work card.
-* `Frost2025.pdf` — Frost research presentation slides.
-* `Frost_SURP_Poster_5_1_2026.pdf` — Frost research poster.
-* `team35_TheLateVariables.pdf` — DataFest presentation.
-* `Alexis-Hegarty-Resume-6.pdf` — downloadable résumé PDF.
-* `alexis-hegarty-headshot.png` — About-section headshot.
+- `theme.css` — shared color variables, base styles, navigation, and footer used by every page.
+- `index.html` — homepage (hero, selected work, about, contact).
+- `resume.html` — résumé page.
+- `frost-research.html`, `datafest.html` — individual project pages (share `project.css` for layout, on top of `theme.css`).
+- `style.css`, `script.js` — legacy files kept for reference; not linked from any page in this version of the site.
 
-## Keep these filenames unchanged
+## Before publishing — replace these placeholder files
 
-The HTML pages reference these files by name. Keep them in the same folder as the HTML files:
+A few assets referenced by the site weren't included in the last upload, so placeholders were generated in the same color palette to keep the site working. Swap in the real files using these exact filenames:
 
-* `image.jpeg`
-* `data_fest_logo.png`
-* `Frost2025.pdf`
-* `Frost_SURP_Poster_5_1_2026.pdf`
-* `team35_TheLateVariables.pdf`
-* `Alexis-Hegarty-Resume-6.pdf`
-* `alexis-hegarty-headshot.png`
+- `frost-preview.png` — Frost research project thumbnail
+- `datafest-preview.png` — Cancer Care Journeys project thumbnail
+- `Frost2025.pdf` — Frost research presentation slides
+- `team35_TheLateVariables.pdf` — DataFest presentation
 
-## Preview locally
-
-Open `index.html` in a browser to view the website.
+Everything else (headshot, résumé PDF, Frost SURP poster PDF) is your real file, already in place.
 
 ## Publish with GitHub Pages
 
-1. Create a GitHub repository, such as `alexis-portfolio`.
-2. Upload the entire project folder to the repository’s `main` branch.
-3. In GitHub, open **Settings → Pages**.
-4. Choose the `main` branch and the `/ (root)` folder as the publishing source.
-5. Save. GitHub will provide the live website URL.
+1. Create a new GitHub repository, e.g. `alexis-portfolio`.
+2. Upload this project's contents to the repository's `main` branch.
+3. In GitHub, open **Settings → Pages** and set **Source** to **GitHub Actions**.
+4. Each push to `main` will publish automatically. The live site URL appears in the workflow's deployment details.
 
 ## Edit later
 
-Update the relevant HTML, CSS, image, or PDF file. Then preview `index.html` locally before publishing your changes.
+Edit locally (or ask Claude/Codex to edit the project), preview by opening `index.html` in a browser, then run:
 
 ```bash
 git add .
