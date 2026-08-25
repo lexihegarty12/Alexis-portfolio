@@ -8,173 +8,132 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme.css">
 
   <style>
-    :root {
-      --stone: #EAE6DF;
-      --stone-deep: #DED9D0;
-      --ink: #242321;
-      --muted: #68645D;
-      --line: rgba(36, 35, 33, .18);
-      --accent: #52604A;
-      --serif: "Fraunces", Georgia, serif;
-      --sans: "Inter", Arial, sans-serif;
-      --edge: clamp(24px, 7vw, 110px);
+    main{
+      max-width:1320px;
+      margin:auto;
+      padding:76px var(--edge) 100px;
     }
 
-    * { box-sizing: border-box; margin: 0; }
-
-    body {
-      background: var(--stone);
-      color: var(--ink);
-      font-family: var(--sans);
-      line-height: 1.55;
+    .label{
+      color:var(--muted);
+      font-size:11px;
+      font-weight:500;
+      letter-spacing:.15em;
+      text-transform:uppercase;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 24px var(--edge);
-      background: rgba(234, 230, 223, .96);
-      border-bottom: 1px solid var(--line);
+    h1{
+      margin:20px 0 52px;
+      color:var(--ink);
+      font:400 clamp(48px, 7vw, 92px)/.98 var(--serif);
+      letter-spacing:-.03em;
     }
 
-    .brand { font: 500 18px var(--serif); }
-
-    .back,
-    .label {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
+    .grid{
+      display:grid;
+      grid-template-columns:.7fr 1.6fr;
+      gap:80px;
+      padding-top:34px;
+      border-top:1px solid var(--line);
     }
 
-    .back:hover,
-    .pdf:hover { color: var(--accent); }
-
-    main {
-      max-width: 1320px;
-      margin: auto;
-      padding: 76px var(--edge) 100px;
+    .side{
+      color:var(--muted);
+      font-size:11px;
+      font-weight:500;
+      letter-spacing:.15em;
+      text-transform:uppercase;
     }
 
-    h1 {
-      margin: 20px 0 52px;
-      font: 400 clamp(52px, 7.4vw, 96px)/.96 var(--serif);
-      letter-spacing: -.03em;
+    .pdf{
+      display:inline-block;
+      margin-top:22px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: .7fr 1.6fr;
-      gap: 80px;
-      padding-top: 34px;
-      border-top: 1px solid var(--line);
+    .section{
+      margin-bottom:42px;
+      padding-bottom:46px;
+      border-bottom:1px solid var(--line);
+    }
+    .section:last-child{ border:0; margin-bottom:0; padding-bottom:0; }
+
+    .section h2{
+      margin-bottom:24px;
+      color:var(--ink);
+      font:400 clamp(30px, 3.4vw, 46px)/1.05 var(--serif);
     }
 
-    .side {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: .15em;
-      text-transform: uppercase;
+    .entry{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:7px 24px;
+      margin-bottom:34px;
+    }
+    .entry:last-child{ margin-bottom:0; }
+
+    .title{
+      color:var(--ink);
+      font-size:16px;
+      font-weight:600;
     }
 
-    .pdf {
-      display: inline-block;
-      margin-top: 22px;
-      color: var(--accent);
-      font-size: 11px;
-      text-decoration: underline;
-      text-underline-offset: 4px;
+    .date{
+      color:var(--muted);
+      font-size:13px;
+      text-align:right;
+      white-space:nowrap;
     }
 
-    .section {
-      margin-bottom: 42px;
-      padding-bottom: 46px;
-      border-bottom: 1px solid var(--line);
+    .org{
+      grid-column:1 / -1;
+      color:var(--ink);
+      font:400 18px/1.35 var(--serif);
     }
 
-    .section:last-child { border: 0; }
-
-    .section h2 {
-      margin-bottom: 24px;
-      font: 400 clamp(31px, 3.5vw, 48px)/1.05 var(--serif);
+    .entry-detail{
+      grid-column:1 / -1;
+      color:var(--muted);
+      font-size:13px;
     }
 
-    .entry {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 7px 24px;
-      margin-bottom: 34px;
+    ul.entry-list{
+      grid-column:1 / -1;
+      margin:0;
+      padding-left:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    ul.entry-list li{ margin:8px 0; }
+
+    .skills{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .skills span{
+      padding:8px 10px;
+      border:1px solid var(--line);
+      color:var(--ink);
+      font-size:11px;
+      font-weight:500;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
 
-    .title {
-      font-size: 16px;
-      font-weight: 600;
-    }
-
-    .date {
-      color: var(--muted);
-      font-size: 13px;
-      text-align: right;
-    }
-
-    .org {
-      grid-column: 1 / -1;
-      font: 400 18px/1.35 var(--serif);
-    }
-
-    .entry-detail {
-      grid-column: 1 / -1;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    ul {
-      grid-column: 1 / -1;
-      padding-left: 18px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    li { margin: 8px 0; }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skills span {
-      padding: 8px 10px;
-      border: 1px solid var(--line);
-      color: var(--ink);
-      font-size: 11px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    @media (max-width: 760px) {
-      main { padding-top: 55px; }
-
-      .grid,
-      .entry {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .date { text-align: left; }
-      .org,
-      ul { grid-column: 1; }
+    @media (max-width:760px){
+      main{ padding-top:55px; }
+      .grid, .entry{ grid-template-columns:1fr; gap:20px; }
+      .date{ text-align:left; }
+      .org, ul.entry-list{ grid-column:1; }
     }
   </style>
 </head>
 
 <body>
-  <header class="nav">
+  <header class="site-nav">
     <a class="brand" href="index.html">Alexis Hegarty</a>
     <a class="back" href="index.html">← Back to portfolio</a>
   </header>
@@ -187,7 +146,7 @@
       <aside class="side">
         Experience · Education · Skills
         <br>
-        <a class="pdf" href="Alexis-Hegarty-Resume-6.pdf" target="_blank" rel="noreferrer">View PDF version ↗</a>
+        <a class="pdf text-link" href="Alexis-Hegarty-Resume-6.pdf" target="_blank" rel="noreferrer">View PDF version ↗</a>
       </aside>
 
       <div>
@@ -196,11 +155,10 @@
 
           <div class="entry">
             <div class="title">California Polytechnic State University (Cal Poly)</div>
-            <div class="date">San Luis Obispo, CA</div>
-            <div class="org">M.S. in Business Analytics</div>
-            <p class="entry-detail">Expected June 2027</p>
+            <div class="date">Expected June 2027</div>
+            <div class="org">M.S. in Business Analytics · San Luis Obispo, CA</div>
 
-            <ul>
+            <ul class="entry-list">
               <li>B.S. in Statistics, Cum Laude, June 2026 · Minor in Dance</li>
               <li>Relevant coursework: Strategic Marketing Analytics, Mathematical Statistics, Multivariate Statistics</li>
             </ul>
@@ -215,7 +173,7 @@
             <div class="date">June 2026 – Present</div>
             <div class="org">Cal Poly · San Luis Obispo, CA</div>
 
-            <ul>
+            <ul class="entry-list">
               <li>Refined a qualitative coding scheme for student transcripts, increasing interrater agreement from approximately 80% to 95%.</li>
               <li>Performed multiple linear regression analyses on 80 student transcripts to evaluate coded cognitive indicators and final assessment scores.</li>
               <li>Authored a technical report and contributed to an oral presentation and research poster.</li>
@@ -227,7 +185,7 @@
             <div class="date">2026 – Present</div>
             <div class="org">Cal Poly · San Luis Obispo, CA</div>
 
-            <ul>
+            <ul class="entry-list">
               <li>Supported 30+ graduate students across Statistics, Econometrics, and Machine Learning.</li>
               <li>Led two in-person and virtual study sessions each week, providing group and individual support for quantitative problem-solving.</li>
             </ul>
@@ -238,7 +196,7 @@
             <div class="date">March – June 2026</div>
             <div class="org">Senior Project, Cal Poly · San Luis Obispo, CA</div>
 
-            <ul>
+            <ul class="entry-list">
               <li>Consulted on three research projects to refine questions and recommend appropriate statistical methods.</li>
               <li>Redesigned an underpowered study, increasing projected statistical power from 13% to 90% within client resource constraints.</li>
               <li>Analyzed longitudinal data from approximately 150 mother-infant pairs.</li>
@@ -269,8 +227,8 @@
             <div class="date">Sept. 2022 – Present</div>
             <div class="org">Orchesis Dance Company, Cal Poly · San Luis Obispo, CA</div>
 
-            <ul>
-              <li>Selected through a competitive audition process to join Cal Poly’s 30-member Orchesis Dance Company.</li>
+            <ul class="entry-list">
+              <li>Selected through a competitive audition process to join Cal Poly's 30-member Orchesis Dance Company.</li>
               <li>Performed in six full-scale dance productions for audiences of 300+ attendees.</li>
               <li>Contributed creative input through improvisation and choreographic development.</li>
             </ul>
@@ -279,5 +237,10 @@
       </div>
     </div>
   </main>
+
+  <footer class="site-footer">
+    <span>© 2026 Alexis Hegarty · San Luis Obispo, CA</span>
+    <a href="index.html">Back to portfolio</a>
+  </footer>
 </body>
 </html>

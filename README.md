@@ -1,13 +1,25 @@
 # Alexis Hegarty Portfolio
 
-A static portfolio site: no backend, build tools, or database required. Edit the words and project links directly in `index.html`, then push to GitHub. The included workflow publishes changes automatically to GitHub Pages.
+A static portfolio site: no backend, build tools, or database required.
 
-## Personalize before publishing
+## Structure
 
-1. In `index.html`, replace the three project placeholders with your actual title, client/context, category, description, and destination link.
-2. Replace `hello@example.com` plus the LinkedIn and GitHub URLs.
-3. Update the About copy and skills as needed.
-4. Keep the portrait at `assets/alexis-hegarty-headshot.png`, or replace it with another image using that same filename.
+- `theme.css` — shared color variables, base styles, navigation, and footer used by every page.
+- `index.html` — homepage (hero, selected work, about, contact).
+- `resume.html` — résumé page.
+- `frost-research.html`, `datafest.html` — individual project pages (share `project.css` for layout, on top of `theme.css`).
+- `style.css`, `script.js` — legacy files kept for reference; not linked from any page in this version of the site.
+
+## Before publishing — replace these placeholder files
+
+A few assets referenced by the site weren't included in the last upload, so placeholders were generated in the same color palette to keep the site working. Swap in the real files using these exact filenames:
+
+- `frost-preview.png` — Frost research project thumbnail
+- `datafest-preview.png` — Cancer Care Journeys project thumbnail
+- `Frost2025.pdf` — Frost research presentation slides
+- `team35_TheLateVariables.pdf` — DataFest presentation
+
+Everything else (headshot, résumé PDF, Frost SURP poster PDF) is your real file, already in place.
 
 ## Publish with GitHub Pages
 
@@ -25,5 +37,3 @@ git add .
 git commit -m "Update portfolio"
 git push
 ```
-
-The GitHub Pages workflow deploys the new version automatically.
